@@ -41,13 +41,13 @@ display=0
 
 # Where should the first X tty be spawned?
 # special value `keep' causes to run X in current tty.
-xtty=7
+xtty=keep
 
 # Should cdm(1) stick to the specified display?
 locktty=no
 
 # Use ConsoleKit for X session?
-consolekit=yes
+consolekit=no
 
 # Timeout for waiting for X session to register with ConsoleKit.
 cktimeout=30
@@ -69,4 +69,4 @@ xinitcommon=~/.xinitcommon
 
 default=0
 
-verbose=no
+verbose=yes
