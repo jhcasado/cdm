@@ -3,6 +3,6 @@
 if [[ "$(tty)" == '/dev/tty1' ]]; then
     [[ -n "$CDM_SPAWN" ]] && return
     # Avoid executing cdm(1) when X11 has already been started.
-    [[ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ]] && exec cdm
+    [[ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ]] && cdm
 fi
 

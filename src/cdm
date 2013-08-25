@@ -78,6 +78,10 @@ locktty=${locktty:-no}
 consolekit=${consolekit:-yes}
 cktimeout=${cktimeout:-30}
 altstartx=${altstartx:-no}
+timeout=${timeout:-0}
+default=${default:-0}
+xinitcommon=${xinitcommon:-}
+verbose=${verbose:-no}
 [[ -z "${binlist[*]}" ]] && binlist=()
 [[ -z "${namelist[*]}" ]] && namelist=()
 [[ -z "${flaglist[*]}" ]] && flaglist=()
@@ -127,20 +131,45 @@ case "${#binlist[@]}" in
         binindex=0
         ;;
     *)
+        echo
+        echo "**************************************************"
+        echo "*** Select Session"
+        echo
         menu=()
         for ((count = 0; count < ${#namelist[@]}; count++)); do
             menu=("${menu[@]}" "$((count+countfrom))" "${namelist[${count}]}")
+            echo " $((count+countfrom))) ${namelist[${count}]}"
         done
-        binindex=$(
-            DIALOGRC="$dialogrc" dialog --colors --stdout \
-            --backtitle "$longname v$ver" --ok-label ' Select ' \
-            --cancel-label ' Exit ' --menu 'Select session' 0 0 0 "${menu[@]}"
-        )
-        if [[ $? != 0 ]]; then
-            clear; exitnormal
+        echo
+        if [[ $timeout -eq 0 ]]; then
+            readtimeout=""
+        else
+            readtimeout="-t ${timeout}"
         fi
-        clear
+        read $readtimeout -n 1 -p "Select (${namelist[${default}]}): " selection
+        echo
+
+#        binindex=$(
+#            DIALOGRC="$dialogrc" dialog --colors --stdout --timeout $timeout\
+#            --backtitle "$longname v$ver" --ok-label ' Select ' \
+#            --cancel-label ' Exit ' --menu 'Select session' 0 0 0 "${menu[@]}"
+#        )
+
+#        if [[ $? -ne 0 ]]; then
+            #clear;
+#            exitnormal
+#        fi
+        selection=${selection:-$default}
+
+        if [ $selection -eq $selection ] 2>/dev/null; then
+            binindex=$selection
+        else
+            echo "exiting to terminal..."
+            exitnormal
+        fi
+        #clear
         let binindex-=countfrom
+        echo "Starting ${namelist[${binindex}]}..."
         ;;
 esac
 
@@ -201,7 +230,21 @@ case ${flaglist[$binindex]} in
 
         $(yesno consolekit) && launchflags=(-c -t "$cktimeout")
         $(yesno altstartx) && launchflags=("${launchflags[@]}" --altstartx)
-        if cdm-xlaunch "${launchflags[@]}" -- "${bin[@]}" -- "${serverargs[@]}"
+        $(yesno verbose) && launchflags=("${launchflags[@]}" --verbose)
+
+        if [[ ! -z $xinitcommon ]]; then
+            if [[ ! -f $xinitcommon ]]; then
+                error "common xinit file does not exist."
+                exiterror
+            fi
+            cp $xinitcommon ~/.xinitrc
+            echo "exec ${bin[@]}" >> ~/.xinitrc
+            cdm-xlaunch "${launchflags[@]}" --   -- "${serverargs[@]}"
+        else
+            cdm-xlaunch "${launchflags[@]}" -- "${bin[@]}" -- "${serverargs[@]}"
+        fi
+
+        if [[ $? -eq 0 ]]
         then
             exitnormal
         else

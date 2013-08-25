@@ -62,3 +62,11 @@ serverargs=(-nolisten tcp)
 # no apparent reason does not start X).
 # Only provided in the hope it may be useful, not a guaranteed fix.
 altstartx=no
+
+timeout=0
+
+xinitcommon=
+
+default=0
+
+verbose=no
