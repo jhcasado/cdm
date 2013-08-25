@@ -65,7 +65,7 @@ altstartx=no
 
 timeout=0
 
-xinitcommon=
+xinitcommon=~/.xinitcommon
 
 default=0
 
