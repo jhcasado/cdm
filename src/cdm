@@ -38,7 +38,7 @@ trap '' SIGINT SIGTSTP
 
 warn() { (printf ' \033[01;33m*\033[00m '; echo "$name: $*") > /dev/stderr; }
 error() { (printf ' \033[01;31m*\033[00m '; echo "$name: $*") > /dev/stderr; }
-exitnormal() { exit 0; }
+exitnormal() { sleep 1; exit 0; }
 exiterror() { sleep 1; exit 1; }
 yesno()
 {
@@ -164,11 +164,15 @@ case "${#binlist[@]}" in
         if [ $selection -eq $selection ] 2>/dev/null; then
             binindex=$selection
         else
-            echo "exiting to terminal..."
+            echo "Exiting to terminal, 'cdm' command to try again..."
             exitnormal
         fi
         #clear
         let binindex-=countfrom
+        if [[ $binindex -ge ${#namelist[@]} ]]; then
+            error "unknown session: ${binindex}."
+            exiterror
+        fi
         echo "Starting ${namelist[${binindex}]}..."
         ;;
 esac
