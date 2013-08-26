@@ -145,8 +145,9 @@ case "${#binlist[@]}" in
             readtimeout=""
         else
             readtimeout="-t ${timeout}"
+            readtitletimeout=" in ${timeout}s"
         fi
-        read $readtimeout -n 1 -p "Select (${namelist[${default}]}): " selection
+        read $readtimeout -n 1 -p "Select (${namelist[${default}]}${readtitletimeout}): " selection
         echo
 
 #        binindex=$(
