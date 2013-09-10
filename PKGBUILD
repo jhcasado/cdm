@@ -6,20 +6,27 @@
 
 pkgname=cdm-simple-git
 _pkgname="cdm-simple"
-pkgver=2013.09.10
+pkgver=1.0
 pkgrel=1
-pkgdesc="A simpler version of Console Display Manager (cdm-git) that use a common .xinitrc, doesn't use/depend from dialog/ncurses and doesn't clear the screen."
+pkgdesc="A simpler Console Display Manager version that use a common .xinitrc, supports default selection with timeout, doesn't depend on dialog/ncurses and doesn't clear the screen."
 arch=('any')
 url="https://github.com/jhcasado/cdm-simple"
 license=('GPL')
-makedepends=('git')
+makedepends=('tar')
 depends=('bash')
 provides=('cdm')
 conflicts=('cdm')
 backup=('etc/cdmrc')
-source=('git://github.com/jhcasado/cdm-simple.git')
-md5sums=('SKIP')
+source=('https://github.com/jhcasado/${pkgname}/archive/v${pkgver}.tar.gz')
+md5sums=('1c8815e8312ea08fc7f9166d32866301')
 epoch=1
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # fix version
+  sed -i "s:\(COMPTON_VERSION ?= \)git.*:\1v${pkgver}:" Makefile
+}
 
 pkgver() {
   cd "$_pkgname"

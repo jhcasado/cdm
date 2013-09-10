@@ -58,12 +58,15 @@ serverargs=(-nolisten tcp)
 # Only provided in the hope it may be useful, not a guaranteed fix.
 altstartx=no
 
+# "default" selection if you just press enter or space
+#
+default=0
+
 # "timeout" in seconds to automatically run "default" program from the 
 # program list binlist
 #
 # 0 means no "timeout" so no "default" selection
 timeout=0
-default=0
 
 # CAUTION!!!
 # This option will overwrite your ~/.xinitrc

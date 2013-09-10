@@ -2,8 +2,9 @@ Simple Console Display Manager
 ==============================
 
 This simpler version of CDM:
-   * doesn't use/depend from dialog/ncurses.
    * can use a common .xinitrc script to start the X programs.
+   * supports a default selection and with timeout.
+   * doesn't depend on dialog/ncurses.
    * doesn't clear the screen.
 
 Invocation
