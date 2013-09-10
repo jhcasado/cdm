@@ -1,5 +1,5 @@
-CDMx: CDM with xinitrc support
-==============================
+CDMs: Simple Console Display Manager
+====================================
 
 This version of CDM will use a common .xinitrc script for the X programs
 and will not clear the screen.
@@ -39,7 +39,7 @@ See /etc/cdmrc for examples.
 Copying
 -------
 
-CDMx Copyright (C) 2013, Javier Honorio Casado Fernandez
+CDMs Copyright (C) 2013, Javier Honorio Casado Fernandez
 CDM  Copyright (C) 2009-2012, Daniel J Griffiths <dgriffiths@ghost1227.com>
 
 Thanks to:
