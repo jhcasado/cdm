@@ -75,7 +75,10 @@ default=0
 # to create a new ~/.xinitrc with an extra line at the end 
 # "exec binlist[selected]"
 #
-# Undeclared or blank mean not to use this option
+# So, you only have to provide a common .xinitrc script that configures
+# everything but doesn't start X
+#
+# Undeclared or blank means not to use this option
 #
 # Example: xinitcommon=~/.xinitrc.cdm
 xinitcommon=
