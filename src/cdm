@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-#   CDMs: Simple Console Display Manager
+#   CDM-simple: Simple Console Display Manager
 #
-#   CDMs Copyright (C) 2013, Javier Honorio Casado Fernandez
+#   CDM-simple Copyright (C) 2013, Javier Honorio Casado Fernandez
 #   CDM  Copyright (C) 2009-2012, Daniel J Griffiths <dgriffiths@ghost1227.com>
 #   Thanks to:
 #
@@ -151,16 +151,6 @@ case "${#binlist[@]}" in
         read $readtimeout -n 1 -p "Select (${namelist[${default}]}${readtitletimeout}): " selection
         echo
 
-#        binindex=$(
-#            DIALOGRC="$dialogrc" dialog --colors --stdout --timeout $timeout\
-#            --backtitle "$longname v$ver" --ok-label ' Select ' \
-#            --cancel-label ' Exit ' --menu 'Select session' 0 0 0 "${menu[@]}"
-#        )
-
-#        if [[ $? -ne 0 ]]; then
-            #clear;
-#            exitnormal
-#        fi
         selection=${selection:-$default}
 
         if [ $selection -eq $selection ] 2>/dev/null; then
@@ -169,7 +159,7 @@ case "${#binlist[@]}" in
             echo "Exiting to terminal, 'cdm' command to try again..."
             exitnormal
         fi
-        #clear
+
         let binindex-=countfrom
         if [[ $binindex -ge ${#namelist[@]} ]]; then
             error "unknown session: ${binindex}."
@@ -265,5 +255,3 @@ case ${flaglist[$binindex]} in
         exiterror
         ;;
 esac
-
-# vim:ts=4:sw=4:et

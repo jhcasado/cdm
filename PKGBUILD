@@ -4,20 +4,20 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Mark Foxwell <fastfret79@archlinux.org.uk>
 
-pkgname=cdm-xinitrc-noclear-git
+pkgname=cdm-simple-git
 _pkgname="cdm"
 pkgver=2013.09.10
 pkgrel=1
-pkgdesc="Simple Console Display Manager using ~/.xinitrc and without clear the screen"
+pkgdesc="A Simple Console Display Manager using a common .xinitrc script to start the X programs and that doesn't clear the screen."
 arch=('any')
-url="https://github.com/jhcasado/cdm-xinitrc-noclear"
+url="https://github.com/jhcasado/cdm-simple"
 license=('GPL')
 makedepends=('git')
 depends=('xorg-xinit' 'xorg-xdpyinfo' 'kbd')
 provides=('cdm')
 conflicts=('cdm')
 backup=('etc/cdmrc' '~/.xinitrc')
-source=('https://github.com/jhcasado/cdm-xinitrc-noclear.git')
+source=('https://github.com/jhcasado/cdm-simple.git')
 md5sums=('SKIP')
 epoch=1
 
@@ -38,5 +38,3 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/doc/cdm" README.md src/cdm-profile.sh
   install -Dm755 -T cdm-profile.sh "$pkgdir/etc/profile.d/zzz-cdm-profile.sh"
 }
-
-# vim:set ts=2 sw=2 et:

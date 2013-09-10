@@ -1,8 +1,10 @@
 Simple Console Display Manager
 ==============================
 
-This version of CDM can use a common .xinitrc script to start the X programs
-and doesn't clear the screen.
+This simpler version of CDM:
+    - doesn't use/depend from dialog/ncurses.
+    - can use a common .xinitrc script to start the X programs.
+    - doesn't clear the screen.
 
 Invocation
 ----------
@@ -39,7 +41,7 @@ See /etc/cdmrc for examples.
 Copying
 -------
 
-CDMs Copyright (C) 2013, Javier Honorio Casado Fernandez    
+CDM-simple Copyright (C) 2013, Javier Honorio Casado Fernandez    
 CDM  Copyright (C) 2009-2012, Daniel J Griffiths <dgriffiths@ghost1227.com>
 
 Thanks to:
