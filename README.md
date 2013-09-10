@@ -1,5 +1,5 @@
-CDM: The Console Display Manager
-================================
+CDMx: CDM with xinitrc support
+==============================
 
 This version of CDM will use a common .xinitrc script for the X programs
 and will not clear the screen.
@@ -20,7 +20,7 @@ existing one:
 
 To autostart cdm when you log in your account, copy the content of
 /usr/share/doc/cdm/cdm-profile.sh to the tail of your shell profile (~/.profile,
-~/.bashrc, etc.).
+~/.bashrc, etc.):
 
     # To avoid potential situation where cdm(1) crashes on every TTY, here we
     # default to execute cdm(1) on tty1 only, and leave other TTYs untouched.
@@ -39,7 +39,9 @@ See /etc/cdmrc for examples.
 Copying
 -------
 
-Copyright (C) 2009-2012, Daniel J Griffiths <dgriffiths@ghost1227.com>
+CDMx Copyright (C) 2013, Javier Honorio Casado Fernandez
+CDM  Copyright (C) 2009-2012, Daniel J Griffiths <dgriffiths@ghost1227.com>
+
 Thanks to:
 
     Andrwe          beta-testing and submitting the fix for the all

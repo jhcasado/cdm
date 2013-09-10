@@ -1,8 +1,8 @@
-# Maintainer: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
+# Maintainer: Javier Honorio Casado Fernandez
+# Contributor: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
 # Contributor: Adlai Chandrasekhar <munchking@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Mark Foxwell <fastfret79@archlinux.org.uk>
-# Simple Contributor: Javier Honorio Casado Fernandez
 
 pkgname=cdm-xinitrc-noclear-git
 _pkgname="cdm"
