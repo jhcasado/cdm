@@ -1,8 +1,8 @@
 Simple Console Display Manager
 ==============================
 
-This version of CDM will use a common .xinitrc script for the X programs
-and will not clear the screen.
+This version of CDM can use a common .xinitrc script to start the X programs
+and doesn't clear the screen.
 
 Invocation
 ----------
