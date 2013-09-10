@@ -4,20 +4,20 @@
 # Contributor: Mark Foxwell <fastfret79@archlinux.org.uk>
 # Simple Contributor: Javier Honorio Casado Fernandez
 
-pkgname=cdm-simple-git
+pkgname=cdm-xinitrc-noclear-git
 _pkgname="cdm"
-pkgver=2013.08.25
+pkgver=2013.09.10
 pkgrel=1
-pkgdesc="Simple Console Display Manager"
+pkgdesc="Simple Console Display Manager using ~/.xinitrc and without clear the screen"
 arch=('any')
-url="https://github.com/jhcasado/cdm-simple"
+url="https://github.com/jhcasado/cdm-xinitrc-noclear"
 license=('GPL')
 makedepends=('git')
 depends=('xorg-xinit' 'xorg-xdpyinfo' 'kbd')
 provides=('cdm')
 conflicts=('cdm')
-backup=('etc/cdmrc')
-source=('git://github.com/jhcasado/cdm.git')
+backup=('etc/cdmrc' '~/.xinitrc')
+source=('https://github.com/jhcasado/cdm-xinitrc-noclear.git')
 md5sums=('SKIP')
 epoch=1
 
@@ -31,12 +31,12 @@ package() {
 
   cd "$srcdir/$_pkgname"
   install -Dm644 -T README.md "$pkgdir/usr/share/doc/cdm/README"
-  install -Dm644 -t "$pkgdir/usr/share/cdm/themes" themes/*
 
   cd "$srcdir/$_pkgname/src"
   install -Dm755 -t "$pkgdir/usr/bin" cdm cdm-xlaunch
   install -Dm644 -t "$pkgdir/etc" cdmrc
-  install -Dm755 -T profile.sh "$pkgdir/etc/profile.d/zzz-cdm.sh"
+  install -Dm644 -t "$pkgdir/usr/share/doc/cdm" README.md src/cdm-profile.sh
+  install -Dm755 -T cdm-profile.sh "$pkgdir/etc/profile.d/zzz-cdm-profile.sh"
 }
 
 # vim:set ts=2 sw=2 et:
