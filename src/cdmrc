@@ -63,10 +63,27 @@ serverargs=(-nolisten tcp)
 # Only provided in the hope it may be useful, not a guaranteed fix.
 altstartx=no
 
+# "timeout" in seconds to automatically run "default" program from the 
+# program list binlist
+#
+# 0 means no "timeout" so no "default" selection
 timeout=0
-
-xinitcommon=~/.xinitcommon
-
 default=0
 
+# CAUTION!!!
+# This option will overwrite your ~/.xinitrc
+# 
+# It will generate a new ~/.xinitrc from an specified "xinitcommon" script 
+# and execute startx to launch it
+#
+# The process is simple, it will use the "xinitcommon" specified file
+# to create a new ~/.xinitrc with an extra line at the end 
+# "exec binlist[selected]"
+#
+# Undeclared or blank mean not to use this option
+#
+# Example: xinitcommon=~/.xinitrc.cdm
+xinitcommon=
+
+# To not redirect the X output to /dev/null
 verbose=yes
