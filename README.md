@@ -22,7 +22,7 @@ existing one:
     /etc/cdmrc
 
 To autostart cdm when you log in your account, copy the content of
-/usr/share/doc/cdm/cdm-profile.sh to the tail of your shell profile (~/.profile,
+/usr/share/cdm/cdm-profile.sh to the tail of your shell profile (~/.profile,
 ~/.bashrc, etc.):
 
     # To avoid potential situation where cdm(1) crashes on every TTY, here we
