@@ -1,4 +1,4 @@
-# Maintainer: Javier Honorio Casado Fernandez
+# Maintainer: J Honorio Casado Fdez <jhcasado@cuantobit.com>
 # Contributor: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
 # Contributor: Adlai Chandrasekhar <munchking@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
